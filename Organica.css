@@ -1,0 +1,484 @@
+﻿/********************************************************************
+
+       N E U T R A L I Z E S  B R O W S E R S
+
+*********************************************************************/
+
+* 	
+	{ 
+	margin: 0; 
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+	}
+
+/********************************************************************
+
+       B A S I C   C O N T A I N E R S
+
+*********************************************************************/
+body
+	{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: nowrap;
+	height: 100vh;
+
+	background-color: forestgreen;
+	background-image: url('Organica.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	
+	color: white;
+	font-size: 10pt;
+	}
+
+@media only screen and (min-width: 1000px)
+	{
+	body { font-size: 12pt; }
+	}
+
+div#organica_Banner, div#organica_Footer
+	{
+	text-align: center;
+	width: 98%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	background-color: rgba(240, 248, 255, 0.4);
+	border: thick aqua solid;
+	color: white;
+	text-shadow: 2px 2px 2px black;
+	padding: 5px;
+	}
+	
+div#organica_Banner
+	{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: nowrap;
+	}
+
+div#organica_Footer
+	{
+	color: aqua;
+	border-width: thin;
+	margin-bottom: 24pt;
+	}
+	
+div#organica_ContentContainer
+	{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: top;
+	flex-wrap: nowrap;
+	height: 100vh;
+	width: 98%;
+	}
+	
+div#organica_Toolbox, 
+div#organica_Navigation, 
+div#organica_Content, 
+div#organica_Properties
+	{
+	border-width: medium;
+	border-style: solid;
+	padding: 0.5%;
+	overflow: hidden;
+	}
+
+div#organica_Toolbox
+	{
+	margin-right: 1%;
+	border-color: red;
+	background-color: rgba(255, 0, 0, 0.2);
+	height: 75%;
+	}
+
+div#organica_Toolbox img
+	{
+	width: 50px;
+	height: 50px;
+	}
+	
+div#organica_Navigation
+	{
+	margin-right: 1%;
+	border-color: blue;
+	background-color: rgba(0, 0, 255, 0.2);
+	height: 85%;
+	}
+	
+div#organica_ContentBox
+	{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex-grow: 8;
+	}
+	
+div#organica_ModeBar
+	{
+	margin-bottom: 0;
+	background-color: transparent;
+	height: 10pt;
+	width: 100%;
+	}
+	
+div#organica_ModeBar li
+	{
+	background-color: white;
+	color: gray;
+	display: inline-block;
+	height: 10pt;
+	width: 6em;
+	text-align: center;
+	vertical-align: top;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	font-weight: lighter;
+	margin-right: 5px;
+	cursor: pointer;
+	}
+	
+div#organica_ModeBar li:last-child
+	{
+	margin-right: 0;
+	}
+
+div#organica_ModeBar li:hover
+	{
+	font-weight: bold;
+	color: black;
+	}
+	
+div#organica_ModeBar li.Selected
+	{
+	font-weight: bold;
+	color: black;
+	}
+
+div#organica_Content
+	{
+	background-color: rgba(255, 255, 255, 0.4);
+	flex-grow: 8;
+
+	overflow: auto;
+	
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	}
+	
+div#organica_Properties
+	{
+	width: 200px;
+	margin-left: 1%;
+	border-color: yellow;
+	background-color: rgba(255, 255, 128, 0.6);
+	font-family: Arial, Helvetica, sans-serif;
+	text-wrap: normal;
+	}
+	
+/********************************************************************
+
+       B A N N E R
+
+*********************************************************************/
+
+img#organica_Icon
+	{
+	height: 100px;
+	width: 100px;
+	max-height: 100px;
+	max-width: 100px;
+	}
+	
+div#organica_Banner h1
+	{
+	font-size: 30pt;
+	font-style: italic;
+	}
+	
+@media only screen and (min-width: 1000px)
+	{
+	div#organica_Banner h1 { font-size: 50pt; }
+	}
+
+/********************************************************************
+
+       T O O L S
+
+*********************************************************************/
+
+div#organica_Toolbox img
+	{
+	background-color: azure;
+	padding: 2px;
+	}
+	
+div#organica_Toolbox img:hover
+	{
+	border: thin white solid;
+	box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);
+	cursor: cell;
+	background-color: white;
+	}
+
+/********************************************************************
+
+       C O N T E N T
+
+*********************************************************************/
+
+div.organica_Document
+	{
+	border: thin black solid;
+	background-color: white;
+	color: maroon;
+	margin-bottom: 1%;
+	margin-right: 1%;
+	padding: 0.5%;
+	display: flex;
+	width: 30em;
+	}
+	
+div.organica_Document:hover
+	{
+	border-color: white;
+	}
+
+div.organica_Document img
+	{
+	max-height: 100px;
+	max-width: 100px;
+	height: 100px;
+	width: 100px;
+	margin-right: 1%;
+	}
+	
+div.organica_Document h1
+	{
+	font-size: 16pt;
+	text-shadow: 2px 2px 2px black;
+	}
+
+@media only screen and (min-width: 1000px)
+	{
+	div.organica_Document h1 { font-size: 24pt; }
+	}
+
+div.organica_Folder
+	{
+	border-color: brown;
+	background-color: peachpuff;
+	}
+	
+div.organica_Empty
+	{
+	border: black thin solid;
+	background-color: azure;
+	color: black;
+	margin-bottom: 12pt;
+	padding: 1em;
+	}
+
+/********************************************************************
+
+       T A B L E S
+
+*********************************************************************/
+
+table
+	{
+	border: 1px aqua solid;
+	padding: 0px;
+	width: 100%;
+	margin-bottom: 12pt;
+	border-collapse: collapse;
+	}
+
+tr
+	{
+	margin: 0;
+	}
+
+th
+	{
+	background-color: aqua;
+	color: black;
+	width: 6em;
+	border-bottom: thin white solid;
+	padding-right: 0.5em;
+	}
+	
+th::last-of-type
+	{
+	border-bottom: none;
+	}
+	
+td
+	{
+	margin: 0;
+	border: thin aqua solid;
+	padding: 4px 1em 4px 0.5em;
+	}
+
+h1
+	{
+	margin-bottom: 12pt;
+	}
+
+/********************************************************************
+
+       P R O P E R T I E S
+
+*********************************************************************/
+
+#organica_Properties 
+	{
+	color: black;
+	font-size: 10pt;
+	}
+	
+#organica_Properties p
+	{
+	margin-bottom: 10pt;
+	}
+
+/********************************************************************
+
+       C O N T A C T S
+
+*********************************************************************/
+
+div.organica_Contacts, div.organica_Contact
+	{
+	border-color: brown;
+	background-color: peachpuff;
+	flex-direction: row;
+	}
+
+h2
+	{
+	border-bottom: 1px brown solid;
+	color: white;
+	margin-bottom: 12pt;
+	}
+
+
+table.ContactName
+	{
+	background-color: peachpuff;
+	color: black;
+	padding: 4pt;
+	border-color: brown;
+	margin-bottom: 12pt;
+	}
+	
+table.ContactName tr
+	{
+	height: 16pt;
+	margin-bottom: 6pt;
+	}
+
+table.ContactName tr th.TopRow
+	{
+	background-color: brown;
+	text-align: left;
+	padding: 2pt;
+	color: white;
+	margin-bottom: 5pt;
+	}
+	
+table.ContactName th
+	{
+	text-align: right;
+	font-weight: normal;
+	}
+
+table.ContactName td
+	{
+	text-align: left;
+	border: 1px brown solid;
+	background-color: white;
+	width: 32em;
+	margin-bottom: 5pt;
+	}
+
+/********************************************************************
+
+       E M A I L
+
+*********************************************************************/
+
+div.organica_Email
+	{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	color: black;
+	background-color: white;
+	padding: 1em;
+	}
+	
+div.organica_Content::has(.organica_Email)
+	{
+	padding: 0px;
+	}
+	
+div.organica_EmailAccount
+	{
+	border-color: gold;
+	background-color: lightyellow;
+	}
+	
+div.organica_EmailHeader
+	{
+	text-align: center;
+	}
+	
+[contenteditable=true]:hover
+	{
+	border: thin red solid;
+	}
+	
+div.organica_EmailDraft
+	{
+	background-color: pink;
+	}
+
+div.organica_EmailSent
+	{
+	background-color: maroon;
+	color: white;
+	}
+
+div.organica_EmailReceived
+	{
+	background-color: green;
+	color: white;
+	}
+div.organica_EmailRead
+	{
+	background-color: lightgreen;
+	}
+	
+div.organica_EmailArchived
+	{
+	background-color: lightblue;
+	}
+	
+div.organica_Email p
+	{
+	margin-bottom: 12pt;
+	}
+
+
+
