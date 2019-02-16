@@ -176,9 +176,9 @@
     Private Function ParsePhone(Parameters As String, Value As String)
         Dim P As New PhoneNumber(Nothing)
         With P
-            .Number = Value
+            .PhoneNumber = Value
             If Parameters.Length > 0 Then
-                .Label = Parameters.Split("=")(1)
+                '.Label = Parameters.Split("=")(1)
             End If
         End With
         Phones.Add(P)

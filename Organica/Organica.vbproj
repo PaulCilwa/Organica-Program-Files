@@ -82,6 +82,7 @@
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="Documents.vb" />
+    <Compile Include="Elemental.vb" />
     <Compile Include="Email.vb" />
     <Compile Include="Frame.Designer.vb">
       <DependentUpon>Frame.vb</DependentUpon>
@@ -92,6 +93,7 @@
     <Compile Include="GlobalSuppressions.vb" />
     <Compile Include="History.vb" />
     <Compile Include="KnownFolders.vb" />
+    <Compile Include="LabelTable.vb" />
     <Compile Include="ToolMenu.vb" />
     <Compile Include="ModeMenu.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

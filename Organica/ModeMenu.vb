@@ -3,6 +3,7 @@
     ViewIncoming
     ViewOutgoing
     Edit
+    Recite
 End Enum
 
 Public Class Modes
@@ -100,6 +101,9 @@ Public Class Mode
                 Label = "Outgoing"
                 ID = "organica_View"
                 Selected = True
+            Case StandardModes.Recite
+                Label = "Recite"
+                ID = "organica_Recite"
         End Select
     End Sub
 

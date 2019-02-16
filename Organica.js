@@ -1,6 +1,11 @@
 ﻿// Requires <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 "use strict";
 
+function GetSelectedValue(SelectTag)
+	{
+	return SelectTag.options[SelectTag.selectedIndex].value;	
+	}
+
 var MyOrganicaAudio = new OrganicaAudio();
 
 function OrganicaAudio()

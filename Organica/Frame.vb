@@ -153,10 +153,13 @@ Public Class Frame
 
     Public Sub ClickMe(ByVal ToolID As String)
         Select Case ToolID
+            Case "organica_AddContact"
+                CType(MyDoc, ContactsDocument).AddContact()
             Case "organica_AddEmail"
                 CType(MyDoc, ContactDocument).AddEmail()
             Case "organica_AddPhone"
                 CType(MyDoc, ContactDocument).AddPhone()
+                MyDoc.Modes.ChangeSelection("organica_Edit")
             Case "organica_AddAddress"
                 CType(MyDoc, ContactDocument).AddAddress()
             Case "organica_AddEmployer"
@@ -179,10 +182,24 @@ Public Class Frame
         RefreshCanvas()
     End Sub
 
-    Public Sub ChangeMe(ByVal ID As String, ByVal PrevValue As String, ByVal NewValue As String)
+    Public Sub ChangeMe(ByVal Fieldname As String, ByVal PrevValue As String, ByVal NewValue As String)
         If PrevValue <> NewValue Then
-            MyDoc.OnChange(ID, NewValue)
+            MyDoc.OnChange(Fieldname, NewValue)
         End If
+    End Sub
+
+    Public Sub ChangeSubField(ByVal Group As String, ByVal Fieldname As String, ByVal Index As Integer, ByVal PrevValue As String, ByVal NewValue As String)
+        If PrevValue <> NewValue Then
+            MyDoc.OnChangeSubField(Group, Fieldname, Index, NewValue)
+        End If
+    End Sub
+
+    Public Sub DeleteMe(ByVal Group As String, ByVal Index As Integer)
+        MyDoc.OnDeleteMe(Group, Index)
+    End Sub
+
+    Public Sub CallMe(ByVal Group As String, ByVal Index As Integer)
+        MyDoc.OnCallMe(Group, Index)
     End Sub
 
     Private Sub cmd_GoBack_Click(sender As Object, e As EventArgs) Handles cmd_GoBack.Click
@@ -204,21 +221,26 @@ Public Class Frame
     End Sub
 
     Private Sub cmd_ViewSource_Click(sender As Object, e As EventArgs)
-        'If MsgBox(Canvas.Document.GetElementById("organica_Content").OuterHtml, MsgBoxStyle.YesNo, "Copy Source?") = MsgBoxResult.Yes Then
-        '    Clipboard.SetText(Canvas.Document.GetElementById("organica_Content").OuterHtml)
-        'End If
-        If MsgBox(Canvas.Document.GetElementById("organica_ModeBar").OuterHtml, MsgBoxStyle.YesNo, "Copy Source?") = MsgBoxResult.Yes Then
-            Clipboard.SetText(Canvas.Document.GetElementById("organica_ModeBar").OuterHtml)
+        If MsgBox(Canvas.Document.GetElementById("organica_Content").OuterHtml, MsgBoxStyle.YesNo, "Copy Source?") = MsgBoxResult.Yes Then
+            Clipboard.SetText(Canvas.Document.GetElementById("organica_Content").OuterHtml)
         End If
+        'If MsgBox(Canvas.Document.GetElementById("organica_ModeBar").OuterHtml, MsgBoxStyle.YesNo, "Copy Source?") = MsgBoxResult.Yes Then
+        '    Clipboard.SetText(Canvas.Document.GetElementById("organica_ModeBar").OuterHtml)
+        'End If
     End Sub
 
     Private Sub cmd_Refresh_Click(sender As Object, e As EventArgs) Handles cmd_Refresh.Click
-        RefreshCanvas()
+        RefreshCanvas(True)
     End Sub
 
-    Public Sub RefreshCanvas()
+    Public Sub RefreshCanvas(Optional ByVal Completely As Boolean = False)
         Refreshing = True
-        Canvas.Refresh(WebBrowserRefreshOption.Completely)
+        If Completely Then
+            Canvas.Refresh(WebBrowserRefreshOption.Completely)
+        Else
+            Render()
+        End If
+        Refreshing = False
     End Sub
 
 End Class

@@ -331,18 +331,6 @@ Public Class Document
         Return Buffer
     End Function
 
-    Public Overridable Overloads Function Editable(ByVal IsEditable As Boolean, ByVal Value As String, ByVal Key As String)
-        'If Value Is Nothing Then Value = "&nbsp;"
-        'If Value.Length = 0 Then Value = "&nbsp;"
-        If Value Is Nothing Then Value = ""
-        Return "<span contenteditable=" & IsEditable & " id='" & Key & "' " & ListLinkHandlers() & ">" & Value & "</span>"
-    End Function
-
-    Friend Overridable Overloads Function ListEditHandlers() As String
-        Dim Result As String = "onblur='window.external.ChangeMe(this.getAttribute(""id""), this.getAttribute(""data-prevvalue""), this.textContent);' "
-        Return Result
-    End Function
-
     Friend Overridable Overloads Function ListLinkHandlers() As String
         Dim EncodedPath As String = HTML_Encode(Pathname.Replace("\", "\\"))
         Dim Result As String = "OnDblClick='window.external.DblClickMe(""" & EncodedPath & """);' "
@@ -364,6 +352,31 @@ Public Class Document
         ' Undefined at the unknown document level
     End Sub
 
+    Public Overridable Overloads Sub OnChangeSubField(ByVal Group As String, ByVal Fieldname As String, ByVal Index As Integer, ByVal NewValue As String)
+        ' Undefined at the unknown document level
+    End Sub
+
+    Public Overridable Overloads Sub OnDeleteMe(ByVal Group As String, ByVal Index As Integer)
+        ' Undefined at the unknown document level
+    End Sub
+
+    Public Overridable Overloads Sub OnCallMe(ByVal Group As String, ByVal Index As Integer)
+        ' Undefined at the unknown document level
+    End Sub
+
+End Class
+
+Public Class Clickable
+
+    Public Overridable Overloads Function Editable(ByVal IsEditable As Boolean, ByVal Index As Integer, ByVal Value As String, ByVal Fieldname As String)
+        If Value Is Nothing Then
+            Value = "&nbsp;"
+        Else
+            If Value.Length = 0 Then Value = "&nbsp;"
+        End If
+        Return "<span contenteditable=" & IsEditable & " id='" & Fieldname & "' " & "onblur='window.external.ChangeMe(" & Fieldname & ", " & Enquote(Value) & ", this.textContent);'>" & Value & "</span>"
+    End Function
+
 End Class
 
 Public Class ClickableDocument
@@ -381,6 +394,15 @@ Public Class ClickableDocument
         End If
         Frame.Render()
     End Sub
+
+    Public Overridable Overloads Function Editable(ByVal IsEditable As Boolean, ByVal Fieldname As String, ByVal Value As String)
+        If Value Is Nothing Then
+            Value = "&nbsp;"
+        Else
+            If Value.Length = 0 Then Value = "&nbsp;"
+        End If
+        Return "<span contenteditable=" & IsEditable & " onblur='window.external.ChangeMe(" & Fieldname & ", " & Enquote(Value) & ", this.textContent);'>" & Value & "</span>"
+    End Function
 
 End Class
 

@@ -71,4 +71,20 @@ Module Utils
         End If
     End Function
 
+    Public Function SafeString(ByRef Value)
+        Return If(Value Is Nothing, String.Empty, Value.ToString)
+    End Function
+
+    Public Function Enquote(ByVal Source As String) As String
+        If Source IsNot Nothing Then
+            Return """" & Source.Replace("""", """""") & """"
+        Else
+            Return """"""
+        End If
+    End Function
+
+    Public Function RenderAttribute(ByVal Name As String, ByVal Value As String) As String
+        Return Name & "=" & Enquote(Value)
+    End Function
+
 End Module

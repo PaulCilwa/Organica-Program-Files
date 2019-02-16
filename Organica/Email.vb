@@ -168,19 +168,19 @@ Public Class EmailDocument
     Public Overloads Function RenderContent() As String
         Dim Buffer As String = "<div class='organica_Email'>"
 
-        Buffer += "<h1>" & HTML_Encode(RcvdDate.ToLongDateString()) & "</h1>" & vbCrLf
+        Buffer += "<h1>" & HTML_Encode(RcvdDate.ToLongDateString()) & "</h1>" & vbLf
 
-        Buffer += "<table>" & vbCrLf
-        Buffer += "<tr><th>To:</th><td>" & HTML_Encode(ToAddr.Address) & "</td><tr>" & vbCrLf
-        Buffer += "<tr><th>From:</th><td>" & HTML_Encode(FromAddr.Address) & "</td><tr>" & vbCrLf
-        Buffer += "<tr><th>CC:</th><td>" & HTML_Encode(CCAddr.Address) & "&nbsp;</td><tr>" & vbCrLf
-        Buffer += "<tr><th>BCC:</th><td>" & HTML_Encode(BCCAddr.Address) & "&nbsp;</td><tr>" & vbCrLf
-        Buffer += "</table>" & vbCrLf
+        Buffer += "<table>" & vbLf
+        Buffer += "<tr><th>To:</th><td>" & HTML_Encode(ToAddr.Address) & "</td><tr>" & vbLf
+        Buffer += "<tr><th>From:</th><td>" & HTML_Encode(FromAddr.Address) & "</td><tr>" & vbLf
+        Buffer += "<tr><th>CC:</th><td>" & HTML_Encode(CCAddr.Address) & "&nbsp;</td><tr>" & vbLf
+        Buffer += "<tr><th>BCC:</th><td>" & HTML_Encode(BCCAddr.Address) & "&nbsp;</td><tr>" & vbLf
+        Buffer += "</table>" & vbLf
 
         If IsHTML Then
             Buffer += Body
         Else
-            Buffer += "<pre>" & Body & "</pre>" & vbCrLf
+            Buffer += "<pre>" & Body & "</pre>" & vbLf
         End If
 
         Buffer += "</div>"
@@ -207,7 +207,7 @@ Public Class EmailDocument
     Public Overloads Overrides Function RenderHeader() As String
         Dim Buffer As String
 
-        Buffer = "<div class='organica_Document" & RenderEmailState & "' " & ListLinkHandlers() & "'>" & vbCrLf
+        Buffer = "<div class='organica_Document" & RenderEmailState & "' " & ListLinkHandlers() & "'>" & vbLf
         Buffer += "<img src='" & HTML_Encode(IconPath) & "'><div>"
         Buffer += "<h1>" & Subject & "</h1>"
         Buffer += "<p>From: " & FromAddr.Address & "</p>"

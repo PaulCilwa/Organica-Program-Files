@@ -247,6 +247,7 @@ div.organica_Document
 	padding: 0.5%;
 	display: flex;
 	width: 30em;
+	cursor: arrow;
 	}
 	
 div.organica_Document:hover
@@ -367,6 +368,7 @@ div.organica_Contacts, div.organica_Contact
 
 h2
 	{
+	text-shadow: 2px 2px 2px brown;
 	border-bottom: 1px brown solid;
 	color: white;
 	margin-bottom: 12pt;
@@ -395,6 +397,8 @@ table.ContactName tr th.TopRow
 	padding: 2pt;
 	color: white;
 	margin-bottom: 5pt;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
 	}
 	
 table.ContactName th
@@ -480,5 +484,36 @@ div.organica_Email p
 	margin-bottom: 12pt;
 	}
 
+/********************************************************************
 
+       O P T I O N S
 
+*********************************************************************/
+
+select { 
+    display: block;
+    max-width: 30%;
+    width: 10em;
+    height: auto !important; 
+    border: none; 
+    background: url('Pointers/DownArrow.png') right center no-repeat; 
+    background-color: brown; 
+    color: white; 
+    font-size: inherit; 
+    font-weight: bold;
+    appearance: none; 
+	} 
+	
+select option 
+	{ 
+    padding: 0 4px;
+    font-size: 10pt;
+    font-weight: normal;
+    background-color: bisque;
+    color: brown;
+	}
+	
+/* for IE and Edge  */
+select::-ms-expand 
+	{ 
+    display: n

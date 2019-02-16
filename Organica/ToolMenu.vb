@@ -58,7 +58,7 @@ Public Class ToolMenu
     End Sub
 
     Public Function Render()
-        Return "<li id=" & ID & "><img src='" & Path.Combine(MyResourcesPath, "Buttons\", ID) & ".png' title='" & "' OnClick='window.external.ClickMe(""" & ID & """)'></li>"
+        Return "<li id=" & ID & "><img src='" & Path.Combine(MyResourcesPath, "Buttons\", ID) & ".png' title='" & Label & "' OnClick='window.external.ClickMe(""" & ID & """)'></li>"
     End Function
 
 End Class
